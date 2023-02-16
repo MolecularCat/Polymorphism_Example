@@ -16,6 +16,20 @@ namespace Polymorphism_example
 
                 return happyNews;
             }
+
+            public virtual string GetWelcomeNews()
+            {
+                string welcomeNews = "Welcome! " + Description;
+
+                return welcomeNews;
+            }
+
+            public string GetTransactionNews()
+            {
+                string welcomeNews = "Transaction! " + Description;
+
+                return welcomeNews;
+            }
         }
 
 
@@ -23,9 +37,23 @@ namespace Polymorphism_example
         {
             public string SuperMethod()
             {
-                string superNews = "Super " + Description;
+                string superNews = "Super! " + Description;
 
                 return superNews;
+            }
+
+            public override string GetWelcomeNews()
+            {
+                string welcomeNews = "Override Welcome! " + Description;
+
+                return welcomeNews;
+            }
+
+            public new string GetTransactionNews()
+            {
+                string welcomeNews = "New Transaction! " + Description;
+
+                return welcomeNews;
             }
         }
         static void Main(string[] args)
@@ -41,15 +69,34 @@ namespace Polymorphism_example
             Console.WriteLine(newsObject.GetHappyNews());
 
 
+            Console.WriteLine("");
+
             SuperNews superNewsObject = new SuperNews();
 
             superNewsObject.Description = "First super news";
+
 
             Console.WriteLine(superNewsObject.Description);
 
             Console.WriteLine(superNewsObject.GetHappyNews());
 
             Console.WriteLine(superNewsObject.SuperMethod());
+
+
+            Console.WriteLine("");
+
+            Console.WriteLine(superNewsObject.GetWelcomeNews());
+
+            Console.WriteLine(superNewsObject.GetTransactionNews());
+
+
+            Console.WriteLine("");
+
+            News tempNews = new SuperNews();
+
+            Console.WriteLine(tempNews.GetWelcomeNews());
+
+            Console.WriteLine(tempNews.GetTransactionNews());
         }
     }
 }
