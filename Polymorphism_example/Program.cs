@@ -10,7 +10,7 @@ namespace Polymorphism_example
             public string Title { get; set; }
             public string Description { get; set; }
             public DateTime Created { get; set; } = DateTime.Now;
-            public string GetHappyNwes()
+            public string GetHappyNews()
             {
                 string happyNews = "Happy! " + Description;
 
@@ -18,18 +18,38 @@ namespace Polymorphism_example
             }
         }
 
+
+        public class SuperNews : News
+        {
+            public string SuperMethod()
+            {
+                string superNews = "Super " + Description;
+
+                return superNews;
+            }
+        }
         static void Main(string[] args)
         {
             News newsObject = new News();
 
             newsObject.Description = "First News";
 
-
             Console.WriteLine("Hello World!");
 
             Console.WriteLine(newsObject.Description);
 
-            Console.WriteLine(newsObject.GetHappyNwes());
+            Console.WriteLine(newsObject.GetHappyNews());
+
+
+            SuperNews superNewsObject = new SuperNews();
+
+            superNewsObject.Description = "First super news";
+
+            Console.WriteLine(superNewsObject.Description);
+
+            Console.WriteLine(superNewsObject.GetHappyNews());
+
+            Console.WriteLine(superNewsObject.SuperMethod());
         }
     }
 }
